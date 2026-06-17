@@ -17,7 +17,7 @@ app.use("/api/projects", projectRoutes);
 app.get("/", (req, res) => {
   res.send("ProjectSphere AI Backend Running");
 });
-
+//this is a port so the browser can access the server, it will use the port defined in the environment variable or default to 5000 if not set
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
