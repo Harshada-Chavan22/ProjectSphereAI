@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("ProjectSphere AI Backend Running");
 });
 //this is a port so the browser can access the server, it will use the port defined in the environment variable or default to 5000 if not set
+//so the server can be accessed from the browser at http://localhost:5000 or the port defined in the environment variable
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
