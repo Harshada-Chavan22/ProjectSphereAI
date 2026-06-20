@@ -6,22 +6,25 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    try {
-      const res = await API.post("/auth/login", {
-        email,
-        password,
-      });
+  try {
+    const res = await API.post("/auth/login", {
+      email,
+      password,
+    });
 
-      localStorage.setItem(
-        "token",
-        res.data.token
-      );
+    localStorage.setItem(
+      "token",
+      res.data.token
+    );
 
-      alert("Login Successful");
-    } catch (error) {
-      alert("Login Failed");
-    }
-  };
+    alert("Login Successful");
+
+    window.location.href = "/dashboard";
+
+  } catch (error) {
+    alert("Login Failed");
+  }
+};
 
   return (
     <div>
