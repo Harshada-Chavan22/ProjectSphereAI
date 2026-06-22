@@ -153,47 +153,40 @@ return ( <div className="min-h-screen bg-gray-100">
       </div>
 
       {/* Create Project Form */}
-<div className="bg-white p-8 rounded-2xl shadow-md mt-8">
 
-  <div className="mb-6">
-    <h2 className="text-2xl font-bold">
-      Create New Project
-    </h2>
-  </div>
+<div className="bg-white p-6 rounded-2xl shadow-md mt-8 max-w-3xl mx-auto">
 
-  <div className="max-w-3xl mx-auto">
+  <h2 className="text-2xl font-bold text-center mb-6">
+  🚀 Create New Project
+</h2>
 
-    <div className="mb-4">
-      <input
-        type="text"
-        placeholder="Project Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
+  <div className="space-y-4">
 
-    <div className="mb-4">
-      <textarea
-        placeholder="Project Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        rows="4"
-        className="w-full p-4 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
+    <input
+      type="text"
+      placeholder="Project Title"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
 
-    <div className="mb-6">
-      <input
-        type="text"
-        placeholder="Domain (e.g. MERN, AI/ML, Web Development)"
-        value={domain}
-        onChange={(e) => setDomain(e.target.value)}
-        className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
+    <textarea
+      placeholder="Project Description"
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      rows="3"
+      className="w-full p-4 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
 
-    <div>
+    <input
+      type="text"
+      placeholder="Domain (e.g. MERN, AI/ML, Web Development)"
+      value={domain}
+      onChange={(e) => setDomain(e.target.value)}
+      className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <div className="flex justify-center pt-2">
       <button
         onClick={createProject}
         className="bg-blue-600 text-white px-8 py-3 rounded-xl shadow-md hover:bg-blue-700 transition duration-300"
@@ -214,10 +207,10 @@ return ( <div className="min-h-screen bg-gray-100">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {projects.map((project) => (
-          <div
-            key={project._id}
-            className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
-          >
+  <div
+    key={project._id}
+    className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+  >
             <h3 className="text-xl font-bold">
               {project.title}
             </h3>
