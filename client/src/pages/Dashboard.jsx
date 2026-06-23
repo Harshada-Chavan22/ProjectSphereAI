@@ -70,7 +70,8 @@ localStorage.removeItem("token");
 window.location.href = "/";
 };
 
-return ( <div className="min-h-screen bg-gray-100">
+return ( 
+<div className="min-h-screen bg-gray-100">
 
 
   {/* Navbar */}
@@ -154,90 +155,95 @@ return ( <div className="min-h-screen bg-gray-100">
 
       {/* Create Project Form */}
 
-<div className="bg-white p-6 rounded-2xl shadow-md mt-8 max-w-3xl mx-auto">
+{/* Create Project + Projects Section */}
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
 
-  <h2 className="text-2xl font-bold text-center mb-6">
-  🚀 Create New Project
-</h2>
+  {/* Create Project Form */}
+  <div className="bg-white p-6 rounded-2xl shadow-md">
 
-  <div className="space-y-4">
+    <h2 className="text-2xl font-bold mb-6">
+      Create New Project
+    </h2>
 
     <input
       type="text"
       placeholder="Project Title"
       value={title}
       onChange={(e) => setTitle(e.target.value)}
-      className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="w-full p-3 border border-gray-300 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
 
     <textarea
       placeholder="Project Description"
       value={description}
       onChange={(e) => setDescription(e.target.value)}
-      rows="3"
-      className="w-full p-4 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+      rows="4"
+      className="w-full p-3 border border-gray-300 rounded-xl mb-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
 
     <input
       type="text"
-      placeholder="Domain (e.g. MERN, AI/ML, Web Development)"
+      placeholder="Domain"
       value={domain}
       onChange={(e) => setDomain(e.target.value)}
-      className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="w-full p-3 border border-gray-300 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
 
-    <div className="flex justify-center pt-2">
-      <button
-        onClick={createProject}
-        className="bg-blue-600 text-white px-8 py-3 rounded-xl shadow-md hover:bg-blue-700 transition duration-300"
-      >
-        + Create Project
-      </button>
+    <button
+      onClick={createProject}
+      className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition duration-300"
+    >
+      + Create Project
+    </button>
+
+  </div>
+
+  {/* My Projects */}
+  <div className="lg:col-span-2">
+
+    <h2 className="text-2xl font-bold mb-4">
+      My Projects
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      {projects.map((project) => (
+        <div
+          key={project._id}
+          className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+        >
+          <h3 className="text-xl font-bold">
+            {project.title}
+          </h3>
+
+          <p className="text-gray-600 mt-3">
+            {project.description}
+          </p>
+
+          <span className="inline-block mt-4 px-3 py-1 bg-blue-100 text-blue-600 rounded-full">
+            {project.domain}
+          </span>
+
+          <button
+            className="mt-4 block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            Open Project
+          </button>
+
+        </div>
+      ))}
+
     </div>
 
   </div>
 
 </div>
 
-      {/* Project Cards */}
-      <h2 className="text-2xl font-bold mt-8 mb-4">
-        My Projects
-      </h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        {projects.map((project) => (
-  <div
-    key={project._id}
-    className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-  >
-            <h3 className="text-xl font-bold">
-              {project.title}
-            </h3>
-
-            <p className="text-gray-600 mt-3">
-              {project.description}
-            </p>
-
-            <span className="inline-block mt-4 px-3 py-1 bg-blue-100 text-blue-600 rounded-full">
-              {project.domain}
-            </span>
-
-            <button
-              className="mt-4 block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              Open Project
-            </button>
-
-          </div>
-        ))}
-
-      </div>
-
-    </div>
-  </div>
 </div>
 
+</div>
+
+</div>
 
 );
 }
