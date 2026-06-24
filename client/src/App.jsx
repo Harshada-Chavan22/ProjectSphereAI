@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ProjectDetails from "./pages/ProjectDetails";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
           path="/dashboard"
           element={<Dashboard />}
         />
+        <Route
+  path="/project/:id"
+  element={<ProjectDetails />}
+/>
       </Routes>
     </BrowserRouter>
   );
