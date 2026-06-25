@@ -3,18 +3,19 @@ const router = express.Router();
 
 const {
   createProject,
-} = require("../controllers/projectController");
-
-const {
-  protect,
-} = require("../middleware/authMiddleware");
-
-const {
-  //createProject,
   getProjects,
+  getProjectById,
 } = require("../controllers/projectController");
 
+const { protect } = require("../middleware/authMiddleware");
+
+// Create Project
 router.post("/", protect, createProject);
+
+// Get All Projects
 router.get("/", protect, getProjects);
+
+// Get Single Project
+router.get("/:id", protect, getProjectById);
 
 module.exports = router;
