@@ -3,26 +3,13 @@ const router = express.Router();
 
 const {
   createTask,
-  getTasksByProject,
-  updateTaskStatus,
+  getTasks,
 } = require("../controllers/taskController");
 
-const {
-  protect,
-} = require("../middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware");
 
 router.post("/", protect, createTask);
 
-router.get(
-  "/project/:projectId",
-  protect,
-  getTasksByProject
-);
-
-router.put(
-  "/:id/status",
-  protect,
-  updateTaskStatus
-);
+router.get("/:projectId", protect, getTasks);
 
 module.exports = router;
