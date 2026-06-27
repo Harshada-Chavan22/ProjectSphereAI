@@ -26,5 +26,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);//5173 - port is used for user interface
+  console.log(`Server running on port ${PORT}`);//5173 - port is used for user interface for the better development experience
 });
