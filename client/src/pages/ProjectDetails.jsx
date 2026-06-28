@@ -10,6 +10,8 @@ function ProjectDetails() {
   const [taskDescription, setTaskDescription] = useState("");
   const [priority, setPriority] = useState("Medium");
   const [deadline, setDeadline] = useState("");
+
+  const [tasks, setTasks] = useState([]);
   useEffect(() => {
     fetchProject();
   }, []);
@@ -23,8 +25,24 @@ function ProjectDetails() {
           Authorization: `Bearer ${token}`,
         },
       });
+      const fetchTasks = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await API.get(`/tasks/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setTasks(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
       setProject(res.data);
+      fetchTasks();
     } catch (error) {
       console.log(error);
     }
@@ -60,6 +78,8 @@ function ProjectDetails() {
     setTaskDescription("");
     setPriority("Medium");
     setDeadline("");
+
+    fetchTasks();
 
   } catch (error) {
     console.log(error);
@@ -131,6 +151,68 @@ function ProjectDetails() {
     + Create Task
   </button>
 </div>
+
+</div>
+<div className="max-w-4xl mx-auto mt-8">
+
+  <h2 className="text-3xl font-bold mb-6">
+    📋 Project Tasks
+  </h2>
+
+  {tasks.length === 0 ? (
+
+    <div className="bg-white p-8 rounded-xl shadow text-center text-gray-500">
+      No tasks created yet.
+    </div>
+
+  ) : (
+
+    <div className="space-y-5">
+
+      {tasks.map((task) => (
+
+        <div
+          key={task._id}
+          className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition"
+        >
+
+          <div className="flex justify-between items-center">
+
+            <h3 className="text-xl font-bold">
+              {task.title}
+            </h3>
+
+            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+              {task.priority}
+            </span>
+
+          </div>
+
+          <p className="text-gray-600 mt-3">
+            {task.description}
+          </p>
+
+          <div className="flex justify-between items-center mt-5">
+
+            <p className="text-gray-500">
+              Deadline:
+              {" "}
+              {task.deadline?.substring(0, 10)}
+            </p>
+
+            <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+              {task.status}
+            </span>
+
+          </div>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  )}
 
 </div>
     </div>
