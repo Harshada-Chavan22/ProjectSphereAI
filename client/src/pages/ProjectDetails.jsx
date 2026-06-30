@@ -86,6 +86,22 @@ function ProjectDetails() {
     alert("Failed to create task");
   }
 };
+
+const deleteTask = async (taskId) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    await API.delete(`/tasks/${taskId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    fetchTasks();
+  } catch (error) {
+    console.log(error);
+  }
+};
   return (
     <div className="min-h-screen bg-gray-100 p-8">
 
@@ -150,6 +166,12 @@ function ProjectDetails() {
   >
     + Create Task
   </button>
+  <button
+  onClick={() => deleteTask(task._id)}
+  className="mt-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
+>
+  🗑 Delete
+</button>
 </div>
 
 </div>
@@ -203,7 +225,13 @@ function ProjectDetails() {
             <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
               {task.status}
             </span>
-
+            
+            <button
+      onClick={() => deleteTask(task._id)}
+      className="mt-4 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
+    >
+      🗑 Delete
+    </button>
           </div>
 
         </div>
