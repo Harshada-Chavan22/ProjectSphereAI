@@ -102,6 +102,25 @@ const deleteTask = async (taskId) => {
     console.log(error);
   }
 };
+const updateStatus = async (taskId, status) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    await API.put(
+      `/tasks/${taskId}`,
+      { status },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    fetchTasks();
+  } catch (error) {
+    console.log(error);
+  }
+};
   return (
     <div className="min-h-screen bg-gray-100 p-8">
 
@@ -222,9 +241,15 @@ const deleteTask = async (taskId) => {
               {task.deadline?.substring(0, 10)}
             </p>
 
-            <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
-              {task.status}
-            </span>
+            <select
+  value={task.status}
+  onChange={(e) => updateStatus(task._id, e.target.value)}
+  className="border rounded-lg px-3 py-2"
+>
+  <option value="To Do">To Do</option>
+  <option value="In Progress">In Progress</option>
+  <option value="Completed">Completed</option>
+</select>
             
             <button
       onClick={() => deleteTask(task._id)}
