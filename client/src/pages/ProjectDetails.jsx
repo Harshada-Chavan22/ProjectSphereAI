@@ -275,4 +275,5 @@ const updateStatus = async (taskId, status) => {
 // this component is responsible for displaying the details of a specific project, 
 // allowing users to create new tasks, view existing tasks, update their status, and delete them. 
 // It fetches project and task data from an API and manages state using React hooks.
+//so this is a comprehensive project management interface that provides users with the ability to manage tasks within a project effectively.
 export default ProjectDetails;
