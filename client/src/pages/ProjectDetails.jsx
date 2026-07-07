@@ -272,5 +272,7 @@ const updateStatus = async (taskId, status) => {
     
   );
 }
-// this component is responsible for displaying the details of a specific project, allowing users to create new tasks, view existing tasks, update their status, and delete them. It fetches project and task data from an API and manages state using React hooks.
+// this component is responsible for displaying the details of a specific project, 
+// allowing users to create new tasks, view existing tasks, update their status, and delete them. 
+// It fetches project and task data from an API and manages state using React hooks.
 export default ProjectDetails;
