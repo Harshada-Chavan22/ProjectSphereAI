@@ -270,7 +270,7 @@ const updateStatus = async (taskId, status) => {
 </div>
     </div>
     
-  ); //this code is for the ProjectDetails component, which displays the details of a specific project and allows users to manage tasks associated with that project. It includes functionality for creating new tasks, viewing existing tasks, updating their status, and deleting them. The component fetches project and task data from an API and manages state using React hooks.
+  ); //this code is for the ProjectDetails component, which displays the details of a specific project and allows users to manage tasks associated with that project. It includes functionality for creating new tasks, viewing existing tasks, updating their status, and deleting them. The component fetches project and task data from an API and manages state using React hooks.ok byeee
 }
 // this component is responsible for displaying the details of a specific project, 
 // allowing users to create new tasks, view existing tasks, update their status, and delete them. 
