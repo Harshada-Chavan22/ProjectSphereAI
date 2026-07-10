@@ -16,6 +16,6 @@ router.get("/:projectId", protect, getTasks);
 
 router.delete("/:id", protect, deleteTask);
 
-router.put("/:id", protect, updateTaskStatus);
+router.put("/:id", protect, updateTaskStatus);// this is a router for update task status
 
 module.exports = router;
