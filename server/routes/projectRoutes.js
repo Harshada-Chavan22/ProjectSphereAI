@@ -5,6 +5,7 @@ const {
   createProject,
   getProjects,
   getProjectById,
+  inviteMember,
 } = require("../controllers/projectController");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -17,5 +18,7 @@ router.get("/", protect, getProjects);
 
 // Get Single Project
 router.get("/:id", protect, getProjectById);
+
+router.put("/:id/invite", protect, inviteMember);
 
 module.exports = router;
