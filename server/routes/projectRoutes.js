@@ -21,4 +21,4 @@ router.get("/:id", protect, getProjectById);
 
 router.put("/:id/invite", protect, inviteMember);
 
-module.exports = router;
+module.exports = router; //this is the export of the router object, which contains all the defined routes for project-related operations.
